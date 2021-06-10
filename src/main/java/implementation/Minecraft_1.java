@@ -28,7 +28,7 @@ public class Minecraft_1 {
 		}
 		
 		int max = 0;
-		//가장 높은 땅을 구함
+		//가장 높은 땅을 구한다.
 		for( int i=0; i<n; i++ ) 
 			for( int j=0; j<m; j++ ) 
 				max = Math.max(max, map[i][j]); 
@@ -37,19 +37,26 @@ public class Minecraft_1 {
 		int height = Integer.MAX_VALUE;
 		int time = Integer.MAX_VALUE;
 		
+		//가장 높은 층에서 0으로 내려오면서 각 층에 대한 시간을 구한다.
 		for( int h=max; h>=0; h--) {
-			a = b = 0;
+			a = 0;	//a는 블록을 제거하여 인벤토리에 넣는 블록의 개수
+			b = 0;	//b는 인벤토리에서 꺼내서 쌓을 블록의 개수
 			
 			for( int i=0; i<n; i++ ) 
 				for( int j=0; j<m; j++ ) {
-					if( map[i][j]>h ) {
+					//기준인 h층보다 클 경우 인벤토리에 넣을 블록의 수를 증가시킨다.
+					if( map[i][j]>h ) {		
 						a += map[i][j] - h;
-					} else {
+					}
+					//기준인 h층보다 크지않을 경우 인벤토리에서 꺼낼 블록의 개수를 증가시킨다.
+					else {
 						b += h - map[i][j];
-				}
+					}
 			}
-			if( a+k-b < 0 ) continue;
-			if( a*2+b < time ) {
+			//만약 인벤토리에 블록이 없다면 층을 낮힌다.
+			if( a+k-b < 0 ) continue;	
+			//위에층의 시간보다 현재층의 시간이 더 적으면 time과 height를 초기화한다.
+			if( a*2+b < time ) {	
 				time = a*2+b;
 				height = h;
 			}
