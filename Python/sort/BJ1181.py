@@ -1,9 +1,9 @@
 import sys
-n = int( input() )
+n = int(input())
 tmp = set()
-for i in range( n ):
-    tmp.add( input() )
+for i in range(n):
+    tmp.add(input())
     
 arr = list(tmp)
-arr.sort( key=len )
-print( "\n".join( arr ) )
+arr.sort(key=len)
+print("\n".join(arr))

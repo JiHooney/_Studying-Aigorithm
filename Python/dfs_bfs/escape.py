@@ -1,48 +1,50 @@
 from collections import deque
 
-n, m = map(int, input().split() )
+n, m = map(int, input().split())
 
 arr = list()
 
-#2ì°¨ì› ë¦¬ìŠ¤íŠ¸ì˜ ë§µ ì •ë³´ ì…ë ¥ë°›ê¸°
+# 2ì°¨ì› ë¦¬ìŠ¤?Š¸?˜ ë§? ? •ë³? ?…? ¥ë°›ê¸°
 for i in range(0, n):
-    arr.append( list( map(int, input() ) ) )
+    arr.append(list(map(int, input())))
     
-#ì´ë™í•  4ë°©í–¥ ì •ì˜(ìƒí•˜ì¢Œìš°)
+# ?´?™?•  4ë°©í–¥ ? •?˜(?ƒ?•˜ì¢Œìš°)
 dx = [1, -1, 0, 0]
 dy = [0, 0, 1, -1]
 
-def bfs( x, y ):
+
+def bfs(x, y):
     sum = 1
     
-    #í˜„ì¬ ë°°ì—´ ê°’ 0ìœ¼ë¡œ ë°”ê¿”ì¤˜ì„œ ë°©ë¬¸ì²˜ë¦¬
+    # ?˜„?¬ ë°°ì—´ ê°? 0?œ¼ë¡? ë°”ê¿”ì¤˜ì„œ ë°©ë¬¸ì²˜ë¦¬
     arr[x][y] = 0
     
-    #ë°í ì„ ì–¸ ë° x,yê°’ ì¶”ê°€
+    # ?°? ?„ ?–¸ ë°? x,yê°? ì¶”ê?
     que = deque()
-    que.append( (x, y) )
+    que.append((x, y))
     
-    #íê°€ ë¹Œ ë•Œê¹Œì§€ ë°˜ë³µí•œë‹¤.
+    # ?ê°? ë¹? ?•Œê¹Œì? ë°˜ë³µ?•œ?‹¤.
     while que:
-        #íì˜ ê°’ ì œê±°
+        # ??˜ ê°? ? œê±?
         now_x, now_y = que.popleft()
         
-        #í˜„ì¬ ìœ„ì¹˜ì—ì„œ ë„¤ ë°©í–¥ìœ¼ë¡œ ìœ„ì¹˜ í™•ì¸
-        for i in range( 4 ):
+        # ?˜„?¬ ?œ„ì¹˜ì—?„œ ?„¤ ë°©í–¥?œ¼ë¡? ?œ„ì¹? ?™•?¸
+        for i in range(4):
             x = now_x + dx[i]
             y = now_y + dy[i]
             
-            #ë°°ì—´ì„ ë²—ì–´ë‚˜ëŠ” ê°’ì´ë©´ ë‹¤ìŒ ìˆœíšŒ
+            # ë°°ì—´?„ ë²—ì–´?‚˜?Š” ê°’ì´ë©? ?‹¤?Œ ?ˆœ?šŒ
             if x < 0 or x >= n or y < 0 or y >= m:
                 continue
                 
-            #ë°°ì—´ê°’ì´1ì´ê³ , xì™€ yê°€ ê¸°ì¡´ì˜ x, yë³´ë‹¤ ì‘ì€ ê²½ìš° ì‹¤í–‰
-            if arr[x][y] == 1 and ( x > now_x or y > now_y ):
+            # ë°°ì—´ê°’ì´1?´ê³?, x?? yê°? ê¸°ì¡´?˜ x, yë³´ë‹¤ ?‘?? ê²½ìš° ?‹¤?–‰
+            if arr[x][y] == 1 and (x > now_x or y > now_y):
                 sum += 1
-                que.append( (x, y) )
+                que.append((x, y))
     
     return sum 
+
                 
-#bfsì‹¤í–‰
-sum = bfs( 0, 0 )
-print( sum )
+# bfs?‹¤?–‰
+sum = bfs(0, 0)
+print(sum)

@@ -4,25 +4,25 @@ M = int(M)
 K = int(K)
 
 nums = input().split(" ")
-for i in range( 0, N ):
-    nums[i] = int( nums[i] )
+for i in range(0, N):
+    nums[i] = int(nums[i])
 
 sum = 0
-maxNum = max( nums )
-nums.remove( maxNum )
-maxNum2 = max( nums )
+maxNum = max(nums)
+nums.remove(maxNum)
+maxNum2 = max(nums)
 
-# ë¦¬ìŠ¤íŠ¸ì•ˆì— ìµœëŒ€ê°’ì´ ì¤‘ë³µì¼ ë•Œ
-for i in range( 0, N-1 ):
+# ë¦¬ìŠ¤?Š¸?•ˆ?— ìµœë?ê°’ì´ ì¤‘ë³µ?¼ ?•Œ
+for i in range(0, N - 1):
     if maxNum == nums[i]:
         sum = maxNum * M
         break;
 
 if sum == 0:
-    for i in range( 1, M+1 ):
+    for i in range(1, M + 1):
         if i % K == 0:
             sum += maxNum2
         else:
             sum += maxNum
 
-print( sum )
+print(sum)

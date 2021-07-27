@@ -2,9 +2,9 @@ word = input()
 
 result = 1
 
-for i in range( 0, (int)( len(word)/2 ) ):
-    if word[i] != word[len(word)-1-i]:
+for i in range(0, (int)(len(word) / 2)):
+    if word[i] != word[len(word) - 1 - i]:
         result = 0
         break;
 
-print( result )
+print(result)

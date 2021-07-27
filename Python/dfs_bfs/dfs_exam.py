@@ -1,14 +1,15 @@
 def dfs(graph, v, visited):
-    #í˜„ì¬ ë…¸ë“œë¥¼ ë°©ë¬¸ì²˜ë¦¬
+    # ?˜„?¬ ?…¸?“œë¥? ë°©ë¬¸ì²˜ë¦¬
     visited[v] = True
-    print(v, end= ' ' )
+    print(v, end=' ')
 
-    #í˜„ì¬ ë…¸ë“œì™€ ì—°ê²°ëœ ë‹¤ë¥¸ ë…¸ë“œë¥¼ ì¬ê·€ì ìœ¼ë¡œ ë°©ë¬¸
+    # ?˜„?¬ ?…¸?“œ?? ?—°ê²°ëœ ?‹¤ë¥? ?…¸?“œë¥? ?¬ê·?? ?œ¼ë¡? ë°©ë¬¸
     for i in graph[v]:
         if not visited[i]:
-            dfs( graph, i, visited )
+            dfs(graph, i, visited)
 
-#ê° ë…¸ë“œê°€ ì—°ê²°ëœ ì •ë³´ë¥¼ ë¦¬ìŠ¤íŠ¸ ìë£Œí˜•ìœ¼ë¡œ í‘œí˜„(2ì°¨ì› ë¦¬ìŠ¤íŠ¸)
+
+# ê°? ?…¸?“œê°? ?—°ê²°ëœ ? •ë³´ë?? ë¦¬ìŠ¤?Š¸ ?ë£Œí˜•?œ¼ë¡? ?‘œ?˜„(2ì°¨ì› ë¦¬ìŠ¤?Š¸)
 graph = [
          [],
          [2, 3, 8],
@@ -21,9 +22,9 @@ graph = [
          [1, 7]
 ]
 
-#ê° ë…¸ë“œê°€ ë°©ë¬¸ëœ ì •ë³´ë¥¼ ë¦¬ìŠ¤íŠ¸ ìë£Œí˜•ìœ¼ë¡œ í‘œí˜„(1ì°¨ì› ë¦¬ìŠ¤íŠ¸)
+# ê°? ?…¸?“œê°? ë°©ë¬¸?œ ? •ë³´ë?? ë¦¬ìŠ¤?Š¸ ?ë£Œí˜•?œ¼ë¡? ?‘œ?˜„(1ì°¨ì› ë¦¬ìŠ¤?Š¸)
 visited = [False] * 9
-#print( visited ) => [False, False, False, False, False, False, False, False, False]
+# print( visited ) => [False, False, False, False, False, False, False, False, False]
 
-#ì •ì˜ëœ DFS í•¨ìˆ˜ í˜¸ì¶œ
-dfs( graph, 1, visited )
+# ? •?˜?œ DFS ?•¨?ˆ˜ ?˜¸ì¶?
+dfs(graph, 1, visited)

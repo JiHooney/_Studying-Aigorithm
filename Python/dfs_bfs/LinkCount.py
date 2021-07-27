@@ -1,60 +1,60 @@
 from collections import deque
 
-###bfs í•¨ìˆ˜ ì •ì˜
-def bfs( start, arr, visit ):
-    visit[start] = 1  #í˜„ì¬ë…¸ë“œ ë°©ë¬¸ì²˜ë¦¬
+
+# ##bfs ?•¨?ˆ˜ ? •?˜
+def bfs(start, arr, visit):
+    visit[start] = 1  # ?˜„?¬?…¸?“œ ë°©ë¬¸ì²˜ë¦¬
     
-    que = deque()  #í ì„ ì–¸
-    que.append( start )  #í˜„ì¬ë…¸ë“œë¥¼ íì— ë„£ëŠ”ë‹¤.
+    que = deque()  # ? ?„ ?–¸
+    que.append(start)  # ?˜„?¬?…¸?“œë¥? ??— ?„£?Š”?‹¤.
     
     while que:
-        now_node = que.pop()  #íì— ë“¤ì–´ê°€ìˆëŠ” ë…¸ë“œë¥¼ ëº€ë‹¤.
+        now_node = que.pop()  # ??— ?“¤?–´ê°??ˆ?Š” ?…¸?“œë¥? ëº??‹¤.
         
-        for i in range(1, n+1):
+        for i in range(1, n + 1):
             if visit[i] == 0 and arr[now_node][i] == 1:
-                que.append( i )  # ië…¸ë“œë¥¼ íì— ë„£ëŠ”ë‹¤.
-                visit[i] = 1  # i ë…¸ë“œë¥¼ ë°©ë¬¸ì²˜ë¦¬í•œë‹¤.
+                que.append(i)  # i?…¸?“œë¥? ??— ?„£?Š”?‹¤.
+                visit[i] = 1  # i ?…¸?“œë¥? ë°©ë¬¸ì²˜ë¦¬?•œ?‹¤.
         
     return visit
 
 
-###ì—¬ê¸°ì„œë¶€í„° ì…ë ¥ë°›ìŒ
-n,m = map(int, input().split() ) #n ë…¸ë“œê°œìˆ˜, m ê°„ì„ ê°œìˆ˜
-sum = 0  #ì—°ê²°ìš”ì†Œ ê°œìˆ˜
+# ##?—¬ê¸°ì„œë¶??„° ?…? ¥ë°›ìŒ
+n, m = map(int, input().split())  # n ?…¸?“œê°œìˆ˜, m ê°„ì„ ê°œìˆ˜
+sum = 0  # ?—°ê²°ìš”?†Œ ê°œìˆ˜
 
-# ê°„ì„ ì •ë³´ í–‰ë ¬ ì„ ì–¸
-arr = [[0] * (n+1) for i in range(n+1)]
+# ê°„ì„ ? •ë³? ?–‰? ¬ ?„ ?–¸
+arr = [[0] * (n + 1) for i in range(n + 1)]
 
-# ë…¸ë“œ ê°„ì„ ì •ë³´ í–‰ë ¬ ë§Œë“¤ê¸°
+# ?…¸?“œ ê°„ì„ ? •ë³? ?–‰? ¬ ë§Œë“¤ê¸?
 for i in range(0, m):
-    a, b = map(int, input().split() )  #ë…¸ë“œ ê°„ì— ê°„ì„ ì •ë³´ì…ë ¥
+    a, b = map(int, input().split())  # ?…¸?“œ ê°„ì— ê°„ì„ ? •ë³´ì…? ¥
     
     arr[a][b] = 1
     arr[b][a] = 1
-
     
-#ê°„ì„ ì •ë³´í–‰ë ¬ ì˜ ì¶œë ¥ë˜ëŠ”ì§€ í™•ì¸í•˜ê¸°
+# ê°„ì„ ? •ë³´í–‰? ¬ ?˜ ì¶œë ¥?˜?Š”ì§? ?™•?¸?•˜ê¸?
 # for i in range(0, n+1):
 #     for j in range(0, n+1):
 #         print( arr[i][j], end="" )
 #     print( end="\n" )
 
-#ë…¸ë“œë°©ë¬¸ì—¬ë¶€ ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
-visit = [ 0 for i in range(n+1) ]
-visit[0] = 1  #0ë²ˆì§¸ ì¸ë±ìŠ¤ëŠ” í•„ìš”ì—†ìœ¼ë¯€ë¡œ ë¯¸ë¦¬ 1ë¡œ ì„¤ì •
+# ?…¸?“œë°©ë¬¸?—¬ë¶? ë¦¬ìŠ¤?Š¸ ë§Œë“¤ê¸?
+visit = [ 0 for i in range(n + 1) ]
+visit[0] = 1  # 0ë²ˆì§¸ ?¸?±?Š¤?Š” ?•„?š”?—†?œ¼ë¯?ë¡? ë¯¸ë¦¬ 1ë¡? ?„¤? •
 
 start = 1
 flag = True
 
 while flag:
-    visit = bfs( start, arr, visit )  #bfsí•¨ìˆ˜ í˜¸ì¶œí•˜ê³  ë°˜í™˜ê°’ìœ¼ë¡œ ë°©ë¬¸ë°°ì—´ì„ ë°˜í™˜
+    visit = bfs(start, arr, visit)  # bfs?•¨?ˆ˜ ?˜¸ì¶œí•˜ê³? ë°˜í™˜ê°’ìœ¼ë¡? ë°©ë¬¸ë°°ì—´?„ ë°˜í™˜
     sum += 1
     
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         if visit[i] == 0:
             start = i
             break
         if i == n and visit[i] == 1:
             flag = False
 
-print( sum )
+print(sum)

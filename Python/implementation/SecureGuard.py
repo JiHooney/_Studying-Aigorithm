@@ -1,30 +1,31 @@
-#ë¶ìª½ ì ¤ ì™¼ìª½ì ì„ ê¸°ì¤€ìœ¼ë¡œ ì‹œê³„ë°˜ëŒ€ë°©í–¥ì˜ ê±°ë¦¬ë¥¼ êµ¬í•¨
-def dist_calc( x, y ):
-    if x == 1: #ë¶
+# ë¶ìª½ ? ¤ ?™¼ìª½ì ?„ ê¸°ì??œ¼ë¡? ?‹œê³„ë°˜??ë°©í–¥?˜ ê±°ë¦¬ë¥? êµ¬í•¨
+def dist_calc(x, y):
+    if x == 1:  # ë¶?
         return y
-    elif x == 2: #ë‚¨
-        return a+b+a-y
-    elif x == 3: #ì„œ
-        return a+b+a+b-y
+    elif x == 2:  # ?‚¨
+        return a + b + a - y
+    elif x == 3:  # ?„œ
+        return a + b + a + b - y
     else:
-        return a+y
+        return a + y
 
-a, b = map( int, input().split() )
 
-circum = (a+b) * 2
+a, b = map(int, input().split())
 
-n = int( input() )
+circum = (a + b) * 2
+
+n = int(input())
 
 dist = []
 
-for i in range(n+1):
-    x, y = map( int, input().split() )
-    dist.append( dist_calc( x, y ) )
+for i in range(n + 1):
+    x, y = map(int, input().split())
+    dist.append(dist_calc(x, y))
     
-my_dist = dist[-1] #ë™ê·¼ì´ ìœ„ì¹˜
+my_dist = dist[-1]  # ?™ê·¼ì´ ?œ„ì¹?
 ans = 0
 
 for i in range(n):
-    clockwise = abs( my_dist-dist[i] ) #ë™ê·¼ì´ ìœ„ì¹˜ - ê° ìƒì ìœ„ì¹˜
-    ans += min( clockwise, circum-clockwise ) #ì‹œê³„ë°©í–¥ê±°ë¦¬ì™€ ë°˜ì‹œê³„ë°©í–¥ ê±°ë¦¬ë¥¼ ë¹„êµ
-print( ans )
+    clockwise = abs(my_dist - dist[i])  # ?™ê·¼ì´ ?œ„ì¹? - ê°? ?ƒ? ?œ„ì¹?
+    ans += min(clockwise, circum - clockwise)  # ?‹œê³„ë°©?–¥ê±°ë¦¬?? ë°˜ì‹œê³„ë°©?–¥ ê±°ë¦¬ë¥? ë¹„êµ
+print(ans)
