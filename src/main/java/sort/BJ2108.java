@@ -16,7 +16,7 @@ public class BJ2108 {
 		int min = Integer.MAX_VALUE;	//범위 구할 때 쓰일 min
 		int max = Integer.MIN_VALUE;	//범위 구할 때 쓰일 max
 		
-		int mean = 0;	//산술평균
+		int mean = 0;		//산술평균
 		int mid = 0;		//중앙값
 		int mode = 0;		//최빈값
 		int range = 0;		//값의 범위
@@ -43,6 +43,10 @@ public class BJ2108 {
 			//빈도수가 1 이상일 때
 			if( arr[i] >= 1 ) {
 				
+				//중앙값 구하기위해 crr배열에 값을 넣는다.
+				int a = arr[i];
+				while( a --> 0 ) { crr.add(i-4000); }
+				
 				//기존빈도수보다 큰 빈도수가 나타났을 때 
 				//최빈값 빈도수 변수 초기화,
 				//최빈값 저장될 리스트 초기화하고 다시 저장
@@ -51,15 +55,9 @@ public class BJ2108 {
 					tmp = arr[i];				
 					brr.add( i-4000 );
 					
-					//중앙값 구하기위해 crr배열에 값을 넣는다.
-					crr.add(i-4000);
-					
 				//기존 빈도수와 같은 빈도수일 때 최빈값 리스트에 값 저장
 				} else if( arr[i] == tmp ) {
 					brr.add( i-4000 );
-					
-					//중앙값 구하기위해 crr배열에 값을 넣는다.
-					crr.add(i-4000);
 				}
 				
 				k++;
