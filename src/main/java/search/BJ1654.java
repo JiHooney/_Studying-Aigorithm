@@ -6,10 +6,9 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BJ1654 {
-	private static boolean chk( long[] a, int n, long x ) {
+	private static boolean chk( long[] a, int n, long mid ) {
 		int cnt = 0;
-		for( int i=0; i<a.length; i++ ) cnt += a[i] / x;
-		//https://dundung.tistory.com/53
+		for( int i=0; i<a.length; i++ ) cnt += a[i] / mid;
 		return cnt >= n;
 	}
 
@@ -26,11 +25,19 @@ public class BJ1654 {
 			max = Math.max( max, arr[i] );
 		}
 		
+		long ans = 0;
 		long start = 1;
 		long end = max;
 		while( start <= end ) {
 			long mid = (start+end) / 2;
+			if( chk( arr, n, mid ) ) {
+				ans = Math.max( ans, mid );
+				start = mid + 1;
+			} else end = mid - 1;
+			
 		}
+		
+		System.out.println( ans );
 		
 	}
 }
