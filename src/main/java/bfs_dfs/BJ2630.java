@@ -14,6 +14,8 @@ public class BJ2630 {
 			for( int j=start; j<end; j++ )
 				tmp++;
 		
+		if( tmp != end*end )
+		
 	}
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
