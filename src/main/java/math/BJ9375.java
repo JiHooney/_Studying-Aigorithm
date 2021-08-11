@@ -17,8 +17,9 @@ public class BJ9375 {
 		String type;
 		int sum;
 		StringTokenizer st;
-		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+		HashMap<String, Integer> hm;
 		while( t --> 0 ) {
+			hm = new HashMap<String, Integer>();
 			n = Integer.parseInt(br.readLine());
 			for( int i=0; i<n; i++ ) {
 				st = new StringTokenizer( br.readLine() );
@@ -26,15 +27,10 @@ public class BJ9375 {
 				type = st.nextToken();
 				hm.put( type, hm.getOrDefault( type, 0 )+1 );
 			}
-			if( hm.size() == 1 ) sum = hm.size();
-			else {
-				sum = 0;
-				for( String s : hm.keySet() ) {
-					sum += hm.get( s );
-				}
-			}
+			sum = 1;
+			for( int val : hm.values() ) sum *= val + 1;
 			
-			System.out.println( sum );
+			System.out.println( sum - 1 );
 		}
 	}
 }
