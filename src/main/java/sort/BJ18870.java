@@ -3,6 +3,7 @@ package sort;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -16,21 +17,21 @@ public class BJ18870 {
 		StringTokenizer st = new StringTokenizer( br.readLine() );
 		for( int i=0; i<n; i++ ) arr[i] = Integer.parseInt( st.nextToken() );
 		
-		StringBuilder sb = new StringBuilder();
+		int copyArr[] = new int[n];
+		copyArr = arr.clone();
+		Arrays.sort( copyArr );
 		
-		int ans = 0;
-		HashMap<Integer, Integer> hs = new HashMap<Integer, Integer>();
-		for( int i=0; i<n; i++ ) {
-			ans = 0;
-			for( int j=0; j<n; j++ ) {
-				if( i==j ) continue;
-				if( !hs.containsKey( arr[j] ) && arr[i] > arr[j] ) {
-					hs.put( arr[j], 1 );
-					ans++;
-				}
+		HashMap<Integer, Integer> m = new HashMap<Integer, Integer>();
+		int idx = 0;
+		for( int i : copyArr ) {
+			
+			if( !m.containsKey(i) ) {
+				m.put( i, idx++ );
 			}
-			sb.append( ans ).append( " " );
 		}
+		
+		StringBuilder sb = new StringBuilder();
+		for( int i : arr ) sb.append( m.get(i) ).append( " " );
 		
 		System.out.println( sb );
 	}
