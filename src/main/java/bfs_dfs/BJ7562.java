@@ -1,6 +1,5 @@
 package bfs_dfs;
 
-import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,10 +7,25 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+class Point {
+	int x, y, ans;
+	Point( int x, int y ) {
+		this.x = x;
+		this.y = y;
+		ans = 0;
+	}
+	
+	Point( int x, int y, int ans ) {
+		this.x = x;
+		this.y = y;
+		this.ans = ans;
+	}
+}
+
 public class BJ7562 {
 	private static int[][] arr;
 	private static int[][] visit;
-	private static int ans, l;
+	private static int l;
 	private static int[] dx = { -1, -1, -2, -2,  1, 1,  2, 2 };
 	private static int[] dy = { -2,  2, -1,  1, -2, 2, -1, 1};
 	
@@ -23,7 +37,7 @@ public class BJ7562 {
 		int new_x, new_y;
 		while( !que.isEmpty() ) {
 			Point p = que.poll();
-			if( arr[p.x][p.y] == 1 ) return ans+"";
+			if( arr[p.x][p.y] == 1 ) return p.ans + "";
 			
 			for( int i=0; i<8; i++ ) {
 				new_x = p.x + dx[i];
@@ -34,13 +48,13 @@ public class BJ7562 {
 				
 				if( visit[new_x][new_y] != 1 ) {
 					visit[new_x][new_y] = 1;
-					que.offer( new Point( new_x, new_y ) );
-					ans++;
+					que.offer( new Point( new_x, new_y, p.ans+1 ) );
+					
 				}
 			}
 		}
 	
-		return ans + "";
+		return "";
 	}
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -52,7 +66,6 @@ public class BJ7562 {
 		int x, y;
 		while( t --> 0 ) {
 			l = Integer.parseInt( br.readLine() );
-			ans = 0;
 			
 			arr = new int[l][l];
 			visit = new int[l][l];
