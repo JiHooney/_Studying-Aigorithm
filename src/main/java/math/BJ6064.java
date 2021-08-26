@@ -3,6 +3,7 @@ package math;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class BJ6064 {
@@ -19,23 +20,29 @@ public class BJ6064 {
 			Y = Integer.parseInt( st.nextToken() );
 			x = Integer.parseInt( st.nextToken() );
 			y = Integer.parseInt( st.nextToken() );
-			
 			boolean ok = false;
-			int a = 1, b = 1, cnt = 1;
-			while( true ) {
-				if( a == X && b == Y ) {
-					ok = true;
-					break;
-				}
-				if( a == x && b == y ) break;
-				if( a == X ) a = 0;
-				if( b == Y ) b = 0;
-				a++; b++;
-				cnt++;
-			}
+			boolean wh = false;
+			if( Y == y ) wh = true;
 			
-			if( ok ) System.out.println( -1 );
-			else System.out.println( cnt );
+			for( int j=x; j<(X*Y); j += X ) {
+				if( wh ) {
+					if( j%Y == y || j%Y == 0 ) {
+						System.out.println( j );
+						ok = true;
+						break;
+					}
+				} else {
+					if( j%Y == y ) {
+						System.out.println( j );
+						ok = true;
+						break;
+					}
+				}
+				
+			}
+			if( !ok ) System.out.println( -1 );
+			
+			
 		}
 	}
 }
