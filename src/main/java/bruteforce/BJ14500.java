@@ -13,7 +13,6 @@ public class BJ14500 {
 	
 	public static void dfs( int row, int col, int len, int sum ) {
 		if( len == 4 ) {
-			System.out.println( row+" / "+col+" / "+sum );
 			ans = Math.max( ans, sum );
 			return;
 		}
@@ -26,7 +25,7 @@ public class BJ14500 {
 			if( visit[nrow][ncol] == 1 ) continue;
 			
 			visit[nrow][ncol] = 1;
-			dfs( nrow, ncol, len++, sum+arr[nrow][ncol] );
+			dfs( nrow, ncol, len+1, sum+arr[nrow][ncol] );
 			visit[nrow][ncol] = 0;
 		}
 	}
@@ -83,7 +82,7 @@ public class BJ14500 {
 		for( int i=0; i<n; i++ ) {
 			for( int j=0; j<m; j++ ) {
 				visit[i][j] = 1;
-				dfs( i, j, 0, 0 );
+				dfs( i, j, 1, arr[i][j] );
 				visit[i][j] = 0;
 				additionalPlus( i, j );
 			}
