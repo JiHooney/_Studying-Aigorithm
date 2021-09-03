@@ -6,18 +6,45 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BJ14889 {
-	static int n, ans;
-	static int[][] arr, visit;
+	static int n;
+	static int[][] arr;
+	static int[] visit;
+	static int ans = Integer.MAX_VALUE;
 	
-	public static void dfs( int a, int b, int hap, int depth ) {
-		if( depth == (int)(n/2) ) {
-			ans = Math.min( ans, hap );
+	public static void cal( int index, int depth ) {
+		if( depth == (n/2) ) {
+			int t1 = 0;
+			int t2 = 0;
+			
+			for( int i=0; i<n; i++ ) {
+				for( int j=i+1; j<n; j++ ) {
+					if( visit[i]==1 && visit[j]==1 ) {
+						t1 += arr[i][j];
+						t1 += arr[j][i];
+					} else if( visit[i]==0 && visit[j]==0 ) {
+						t2 += arr[i][j];
+						t2 += arr[j][i];
+					}
+				}
+			}
+			
+			//두 팀의 차이값
+			int cha = Math.abs( t1-t2 );
+			
+			if( cha == 0 ) {
+				System.out.println( cha );
+				System.exit(0);
+			}
+			
+			ans = Math.min( ans, cha );
 			return;
 		}
 		
-		for( int i=0; i<n; i++ ) {
-			for( int j=0; j<n; j++ ) {
-				
+		for( int i=index; i<n; i++ ) {
+			if( visit[i] == 0 ) {
+				visit[i] = 1;
+				cal( i+1, depth+1 );
+				visit[i] = 0;
 			}
 		}
 		
@@ -27,7 +54,7 @@ public class BJ14889 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		n = Integer.parseInt( br.readLine() );
 		arr = new int[n][n];
-		visit = new int[n][n];
+		visit = new int[n];
 		StringTokenizer st;
 		for( int i=0; i<n; i++ ) {
 			st = new StringTokenizer( br.readLine() );
@@ -35,9 +62,7 @@ public class BJ14889 {
 				arr[i][j] = Integer.parseInt( st.nextToken() );
 			}
 		}
-		
-		ans = Integer.MAX_VALUE;
-		dfs( 0, 0, 0, 0 );
+		cal( 0, 0 );
 		System.out.println( ans );
 	}
 }
