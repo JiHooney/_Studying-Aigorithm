@@ -18,6 +18,3 @@ for i in range(0, N):
             dp[i] = dp[j] + 1
             
 print( max(dp) )
-    
-
-
