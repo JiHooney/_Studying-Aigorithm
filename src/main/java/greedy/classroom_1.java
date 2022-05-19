@@ -35,7 +35,7 @@ public class classroom_1 {
 			lectures[i] = new Lecture(start, end);
 		}
 		
-		Arrays.sort(lectures, (l1, l2) -> l1.start == l2.start ? l1.end - l2.end : l1.start - l2.start);
+		//Arrays.sort(lectures, (l1, l2) -> l1.start == l2.start ? l1.end - l2.end : l1.start - l2.start);
 		
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
 		pq.offer( lectures[0].end );
